@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define noOfQueens 20
+#define noOfQueens 4
 
 static int solCount = 0;
 
