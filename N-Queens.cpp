@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Enter the no. of queens you want the solution for:
 #define noOfQueens 4
 
 static int solCount = 0;
