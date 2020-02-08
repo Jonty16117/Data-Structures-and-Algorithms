@@ -22,11 +22,11 @@ using namespace std;
 }*/
 
 void bresenham(int x0, int y0, int x1, int y1) {
-	int dy = y1 - y0;
-	int dx = x1 - x0;
+	int dy = y1 - y0; //change in y
+	int dx = x1 - x0; //change in x
 	
 	if(dx > dy) { 
-		float slopeError = (float)dy/(float)dx;
+		float slopeError = (float)dy/(float)dx; //sloap (dy/dx)
 		
 		for(int x = x0, y = y0; x <= x1; x++) {
 			cout << "(" << x << ", " << y << ")\n";
@@ -46,7 +46,7 @@ int main()
 {
 	int x0, y0, x1, y1;
 	cout << "Enter the starting co-ordinates: ";
-	cin	>> x0 >> y0;
+	cin >> x0 >> y0;
 	cout << "Enter the ending co-ordinates: ";
 	cin >> x1 >> y1;
 	cout << "The points to be selected are: \n";
