@@ -1,4 +1,10 @@
 s = "abazzzzasddskbkkkljfababababa"
+# aaaaaafaaaabbbcbbbaaaafaaaaaaaaaanmmm)
+# ^aa#a#a#a#a#a#b#b#b#c#c#b#b#b#a#a#a#a#a#a$
+# 00000000000000000000000000000000000000000
+
+# 035530030(19)03553003
+
 def manachers(s):
 	new = '#'.join('^{}$'.format(s))
 	n = len(new)
