@@ -1,59 +1,66 @@
-# Python program to print DFS traversal for complete graph 
-from collections import defaultdict 
-  
-# This class represents a directed graph using adjacency 
-# list representation 
-class Graph: 
-  
-    # Constructor 
-    def __init__(self): 
-  
-        # default dictionary to store graph 
-        self.graph = defaultdict(list) 
-  
-    # function to add an edge to graph 
-    def addEdge(self,u,v): 
-        self.graph[u].append(v) 
-  
-    # A function used by DFS 
-    def DFSUtil(self, v, visited): 
-  
-        # Mark the current node as visited and print it 
-        visited[v]= True
-        print v, 
-  
-        # Recur for all the vertices adjacent to 
-        # this vertex 
-        for i in self.graph[v]: 
-            if visited[i] == False: 
-                self.DFSUtil(i, visited) 
-  
-  
-    # The function to do DFS traversal. It uses 
-    # recursive DFSUtil() 
-    def DFS(self): 
-        V = len(self.graph)  #total vertices 
-  
-        # Mark all the vertices as not visited 
-        visited =[False]*(V) 
-  
-        # Call the recursive helper function to print 
-        # DFS traversal starting from all vertices one 
-        # by one 
-        for i in range(V): 
-            if visited[i] == False: 
-                self.DFSUtil(i, visited) 
-  
-  
-# Driver code 
-# Create a graph given in the above diagram 
-g = Graph() 
-g.addEdge(0, 1) 
-g.addEdge(0, 2) 
-g.addEdge(1, 2) 
-g.addEdge(2, 0) 
-g.addEdge(2, 3) 
-g.addEdge(3, 3) 
-  
-print "Following is Depth First Traversal"
-g.DFS() 
+#adjacency list
+graph = {0:[3], 1:[2, 3], 2:[1, 3], 3:[0, 1, 2]}
+visited = [False] * len(graph)
+def dfs(root):
+	if visited[root]:
+		return
+	visited[root] = True
+	#Process this node
+	print(root)
+	curr_node = graph.get(root)
+	for i in curr_node:
+		dfs(i)
+#dfs(0)
+k = 0
+visited = [False] * (k + 100)
+l = []
+tree = dict()
+def dfs(u, parent, distance):
+    # if (visited[u] == True):
+    #     print("returned from: ", u)
+    #     return
+    # if (u == parent):
+    #     return
+    flag = 0    
+    for i in tree[u]: 
+        if (i == parent):
+            continue
+        flag = 1
+        dfs(i, u, distance + 1)
+    
+    if (flag == 0):
+        l.append(distance)
+
+def solve():
+    k, n = list(map(int, input().split()))
+
+    for i in range(k - 1):
+        u, v = list(map(int, input().split()))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+        if (len(tree.get(u, [])) == 0):
+            tree[u] = [v]
+        else:
+            tree[u].append(v)
+        if (len(tree.get(v, [])) == 0):
+            tree[v] = [u]
+        else:
+            tree[v].append(u)
+    #1 - 2, 6, 7                  
+    #7 - 3, 5
+    #3 - 8
+    #5 - 4
+    #1 7
+    #6 1
+    d.get(1, [])
+    #{1:{2, 6, 7}, 7:{3, 5}, 3:{8}, 
+    #5:{4}}
+    print(tree)
+    dfs(1, 0, 0)
+    print(l)
+
+    s = 0
+    for _ in range(n):
+        t = max(l)
+        s += t
+        l[l.index(t)] -= 1
+    print("Sum: ", s)
+solve()
